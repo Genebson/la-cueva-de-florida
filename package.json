@@ -1,0 +1,25 @@
+{
+  "name": "conversor-divisas",
+  "version": "1.0.0",
+  "description": "Conversor de Divisas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Genebson/conversor-divisas.git"
+  },
+  "author": "Mauricio Genebrieres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Genebson/conversor-divisas/issues"
+  },
+  "homepage": "https://github.com/Genebson/conversor-divisas#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.2"
+  },
+  "devDependencies": {
+    "cypress": "^7.6.0"
+  }
+}

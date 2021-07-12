@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/90abbd5f29.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>La Cueva de Florida</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="logo-exchange d-flex justify-content-center">
+        <img src="/assets/logo/logo1.png" alt="">
+      </div>
+    </div>
+    <div class="container-conversor">
+      <!-- <div class="row">
+        <div class="top-conversor mt-5">
+          <div class="div">
+            <i class="fas fa-dollar-sign"></i>
+            <span class="convertir">Convertir</span>
+          </div>
+        </div>
+      </div> -->
+      <div class="box-conversor mt-5">
+        <form class="inside" id="form">
+          <div class="conversor-divisas">
+            <!-- <div class="row">
+              <div class="texto-divisa">
+                <label for="importe" class="importe">Importe</label>
+                <label for="importe" class="de-importe">De</label>
+                <label for="importe" class="a-importe">A</label>
+              </div>
+            </div> -->
+            <div class="grupo-inputs mt-5 w-50 p-2">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="grupo-importe">
+                    <label for="" class="importe" id="importe">Importe</label>
+                    <input type="text" class="form-control input-importe" name="importe" value="0">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="grupo-de-importe">
+                    <label for="de-moneda" class="de-importe" id="de-importe">De</label>
+                    <select class="form-select" name="de-moneda">
+                      <option hidden selected>Elija una moneda...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="swap">
+                    <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="grupo-a-importe">
+                    <label for="a-importe" class="a-importe" id="a-importe">A</label>
+                    <select class="form-select" name="a-moneda">
+                      <option hidden selected>Elija una moneda...</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hola mt-4">
+            <button type="submit" class="btn-convertir" id="btn-convertir">Convertir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="github mt-5" id="github">
+          <a href="http://github.com/Genebson/la-cueva-de-florida" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/src/main.js"></script>
+</body>
+
+</html>

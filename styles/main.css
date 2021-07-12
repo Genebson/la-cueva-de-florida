@@ -1,0 +1,95 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+background-image: url('/assets/background/white-wood.jpg');
+}
+
+.box-conversor {
+  display: flex;
+  justify-content: center;
+}
+
+
+.top-conversor {
+  display: flex;
+  justify-content: center;
+}
+
+.div {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  width: 1104px;
+  height: 56px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.inside {
+  box-shadow: rgb(35 55 80 / 30%) 0px 12px 12px;
+  background-color: #fff;
+  width: 1104px;
+  height: 202px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.importe,
+.de-importe,
+.a-importe {
+  font-weight: bold;
+}
+
+.swap-btn {
+  width: 45px;
+  border-radius: 45px;
+  border: 1px solid rgb(221, 221, 221);
+  background: none;
+}
+
+.hola {
+  display: flex;
+  justify-content: center;
+}
+
+.grupo-inputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-convertir {
+  background: linear-gradient(to bottom, #111 0%, #222 100%);
+  border-radius: 4px;
+  color: white;
+  border: none;
+  box-shadow: 0 8px 0 #111;
+}
+
+.fa-exchange-alt {
+  color: rgb(0, 111, 232);
+}
+
+.github {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  cursor: pointer;
+}
+
+.convertir {
+  color: rgb(0, 111, 232);
+  font-weight: 600;
+}
+
+.fa-dollar-sign {
+  color: rgb(0, 111, 232)
+}
+
+.fa-github {
+  color: #000;
+  font-size: 3em;
+}
