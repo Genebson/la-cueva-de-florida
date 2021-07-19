@@ -24,61 +24,31 @@
       </div>
     </div>
     <div class="container-conversor">
-      <!-- <div class="row">
-        <div class="top-conversor mt-5">
-          <div class="div">
-            <i class="fas fa-dollar-sign"></i>
-            <span class="convertir">Convertir</span>
+      <form class="inside" id="form">
+        <div class="row">
+          <div class="input-importe col-lg-4">
+            <input type="text" name="" id="importe">
           </div>
-        </div>
-      </div> -->
-      <div class="box-conversor mt-5">
-        <form class="inside" id="form">
-          <div class="conversor-divisas">
-            <!-- <div class="row">
-              <div class="texto-divisa">
-                <label for="importe" class="importe">Importe</label>
-                <label for="importe" class="de-importe">De</label>
-                <label for="importe" class="a-importe">A</label>
-              </div>
-            </div> -->
-            <div class="grupo-inputs mt-5 w-50 p-2">
-              <div class="row">
-                <div class="col-lg-3">
-                  <div class="grupo-importe">
-                    <label for="" class="importe" id="importe">Importe</label>
-                    <input type="text" class="form-control input-importe" name="importe" value="0">
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="grupo-de-importe">
-                    <label for="de-moneda" class="de-importe" id="de-importe">De</label>
-                    <select class="form-select" name="de-moneda">
-                      <option hidden selected>Elija una moneda...</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="swap">
-                    <i class="fas fa-exchange-alt"></i>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="grupo-a-importe">
-                    <label for="a-importe" class="a-importe" id="a-importe">A</label>
-                    <select class="form-select" name="a-moneda">
-                      <option hidden selected>Elija una moneda...</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+          <div class="selectbox-de-importe col-lg-4">
+            <div class="dropdown">
+              <input type="text" placeholder="Selecciona tu moneda" class="input-de-importe" id="input-de-importe">
+              <div id="dropdown-description" class="dropdown-content"></div>
             </div>
           </div>
-          <div class="hola mt-4">
-            <button type="submit" class="btn-convertir" id="btn-convertir">Convertir</button>
+          <div class="selectbox-a-importe col-lg-4">
+            <div class="select-a-importe" id="select-a-importe">
+              <div class="contenido-select">
+                <span class="">Selecciona tu moneda...</span>
+              </div>
+              <i class="fas fa-angle-down"></i>
+            </div>
           </div>
-        </form>
-      </div>
+        </div>
+
+        <!-- <div class="button-container mt-4">
+          <button type="submit" class="btn-convertir" id="btn-convertir">Convertir</button>
+        </div> -->
+      </form>
     </div>
     <div class="row">
       <div class="col-12">
@@ -89,6 +59,8 @@
     </div>
   </div>
   <script src="/src/main.js"></script>
+  <script src="/src/obtener-banderas.js"></script>
+  <script src="/obtenerBanderas.json"></script>
 </body>
 
 </html>
