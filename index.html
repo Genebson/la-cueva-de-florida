@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/90abbd5f29.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -24,17 +24,23 @@
       </div>
     </div>
     <div class="container-conversor">
-      <form class="inside" id="form">
+      <form class="inside mt-5" id="form">
         <div class="row">
-          <div class="input-importe col-lg-4">
-            <input type="text" name="" id="importe">
+          <div class="selectbox-input-importe col-lg-4 mt-4">
+            <i class="fas fa-dollar-sign"></i>
+            <span class="importe-span">Importe</span>
+            <input type="number" id="importe" class="input-importe">
           </div>
-          <div class="selectbox-de-importe col-lg-4">
-            <div class="dropdown" id="dropdown">
-              <input type="text" placeholder="Selecciona tu moneda" class="input-de-importe" id="input-de-importe">
-              <div id="dropdown-description" class="dropdown-content-de">
+          <div class="selectbox-de-importe col-lg-4 mt-4">
+            <span class="de-span">De</span>
+            <div class="dropdown-de">
+              <div class="currency-selected-de active">
+                <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input active">
+                <span class="descripcion-de"></span>
+              </div>
+              <input type="text" class="input-de-importe" id="input-de-importe" readonly="readonly">
+              <!-- <div id="dropdown-description-de" class="dropdown-content-de">
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
                   <img src="https://www.countryflags.io/ae/shiny/64.png" class="bandera-input">
@@ -490,19 +496,19 @@
                   <img src="https://www.countryflags.io/ws/shiny/64.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/xa/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/xc/shiny/64.png" class="bandera-input">
+                  <img src="assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/xd/shiny/64.png" class="bandera-input">
+                  <img src="assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/xo/shiny/64.png" class="bandera-input">
+                  <img src="assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
-                  <img src="https://www.countryflags.io/xp/shiny/64.png" class="bandera-input">
+                  <img src="assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-de">
                   <img src="https://www.countryflags.io/ye/shiny/64.png" class="bandera-input">
@@ -513,14 +519,14 @@
                 <div class="currency-selected-de">
                   <img src="https://www.countryflags.io/zw/shiny/64.png" class="bandera-input">
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
-          <input type="hidden" name="moneda" id="inputSelect" value="">
-          <div class="selectbox-a-importe col-lg-4">
-            <div class="dropdown">
+          <div class="selectbox-a-importe col-lg-4 mt-4">
+            <span class="a-span">A</span>
+            <div class="dropdown-a">
               <input type="text" placeholder="Selecciona tu moneda" class="input-a-importe" id="input-a-importe">
-              <div id="dropdown-description" class="dropdown-content-a">
+              <div id="dropdown-description-a" class="dropdown-content-a">
                 <div class="currency-selected-a">
                   <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input">
                 </div>
@@ -978,19 +984,19 @@
                   <img src="https://www.countryflags.io/ws/shiny/64.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/xa/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/xc/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/xd/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/xo/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/xp/shiny/64.png" class="bandera-input">
+                  <img src="/assets/flag-default/unknown-flag.png" class="bandera-input">
                 </div>
                 <div class="currency-selected-a">
                   <img src="https://www.countryflags.io/ye/shiny/64.png" class="bandera-input">
@@ -1003,12 +1009,14 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="resultado-conversion col-lg-12 d-flex justify-content-center mt-4">
+            <span class="texto-resultado" id="resultado">hola</span>
           </div>
         </div>
-
-        <!-- <div class="button-container mt-4">
-          <button type="submit" class="btn-convertir" id="btn-convertir">Convertir</button>
-        </div> -->
+        <div class="button-container mt-5">
+          <button type="button" class="btn-convertir" id="btn-convertir">Convertir</button>
+        </div>
       </form>
     </div>
     <div class="row">
@@ -1020,8 +1028,6 @@
     </div>
   </div>
   <script src="/src/main.js"></script>
-  <script src="/src/obtener-banderas.js"></script>
-  <script src="/obtenerBanderas.json"></script>
 </body>
 
 </html>

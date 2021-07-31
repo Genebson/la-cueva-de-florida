@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
 }
 
 body {
@@ -19,11 +19,59 @@ background-image: url('/assets/background/white-wood.jpg');
   box-shadow: rgb(35 55 80 / 30%) 0px 12px 12px;
   background-color: #fff;
   width: 1104px;
-  height: 202px;
+  height: 242px;
   border-radius: 5px;
 }
 
+.importe-span,
+.de-span,
+.a-span {
+  display: block;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.fa-dollar-sign {
+  position: absolute;
+  margin-top: 42px;
+  margin-left: 5px;
+  font-size: 1.3em;
+  color:#C2BFBF;
+}
+
+.input-importe {
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 2pt;
+  outline: none;
+  transition: .1s;
+  width: 290px;
+}
+
+.input-importe::-webkit-inner-spin-button,
+.input-importe::-webkit-outer-spin-button {
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .input-de-importe {
+  box-sizing: border-box;
+  /* background-image: url('https://www.countryflags.io/ar/shiny/64.png');
+  background-position: top 3px left 1px;
+  background-size: 45px;
+  background-repeat: no-repeat; */
+  padding: 14px 20px 12px 45px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  cursor: default;
+  width: 290px;
+}
+.input-a-importe {
   box-sizing: border-box;
   background-image: url('https://www.w3schools.com/howto/searchicon.png');
   background-position: top 17px left 15px;
@@ -32,31 +80,84 @@ background-image: url('/assets/background/white-wood.jpg');
   padding: 14px 20px 12px 45px;
   border: none;
   border-bottom: 1px solid #ddd;
+  outline: none;
+  width: 290px;
+  cursor: pointer;
 }
 
-.input-de-importe:focus {outline: 3px solid #ddd;}
 
-.dropdown {
+.input-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
+.input-a-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
+
+.dropdown-de .currency-selected-de.active,
+.dropdown-a .currency-selected-a.active {
+position: absolute;
+width: 40px;
+margin-top: 5px;
+border-radius: 15px;
+}
+
+.dropdown-de,
+.dropdown-a {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-content-de,
+.dropdown-content-a {
   display: none;
   position: absolute;
   background-color: #f6f6f6;
-  min-width: 260px;
+  min-width: 292px;
   overflow: auto;
+  height: 360px;
+  margin-top: 5px;
   border: 1px solid #ddd;
+  border-radius: 7px;
   z-index: 100;
 }
 
-.descripcion {
-  display: visible;
-  color: #000;
+.bandera-input {
+  width: 40px;
+  border-radius: 40%;
 }
 
-.dropdown p:hover {background-color: #fff;}
+.bandera-input.active {
+  position: absolute;
+  width: 40px;
+  /* margin-top: 2px; */
+  border-radius: 15px;
+}
+
+.currency-selected-a {
+  display: flex;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border-radius: 10px;
+}
+
+.currency-selected-de:hover,
+.currency-selected-a:hover {
+  background-color: #D1C7CF
+}
+
+.active:hover,
+.active:hover {
+  background-color: white
+}
+
+.descripcion-de {
+  color: #000;
+  margin-left: 45px;
+  margin-top: 22px;
+}
+
+.descripcion-a {
+  color: #000;
+  margin-top: 8px;
+}
+
+.dropdown span:hover {background-color: #fff;}
 
 .show {display: block;}
 
@@ -101,6 +202,7 @@ background-image: url('/assets/background/white-wood.jpg');
   border-radius: 4px;
   color: white;
   border: none;
+  width: 90px;
   box-shadow: 0 8px 0 #111;
 }
 
@@ -111,10 +213,6 @@ a {
 .github {
   display: flex;
   justify-content: center;
-}
-
-.fa-dollar-sign {
-  color: rgb(0, 111, 232)
 }
 
 .fa-github {

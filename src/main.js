@@ -1,83 +1,91 @@
 const $form = document.querySelector('#form')
 const $importe = $form.importe.value
-const $contenidoDropdownDe = document.querySelector('.dropdown-content-de')
-const $contenidoDropdownA = document.querySelector('.dropdown-content-a')
-const $inputDeImporte = $form.querySelector('#input-de-importe')
+const $dropdownA = document.querySelector('.dropdown-content-a')
+const $inputAImporte = $form.querySelector('#input-a-importe')
 const $contenidoSelect = document.querySelector('.selectbox-de-importe .dropdown')
-const hiddenInput = document.querySelector('#inputSelect')
+const $dropdownContenedorDe = document.querySelector('.dropdown-de')
+const $dropdownContenedorA = document.querySelector('.dropdown-a')
+const $btnConvertir = $form.querySelector('#btn-convertir')
+const $textoResultado = $form.querySelector('#resultado')
 
 fetch('https://v6.exchangerate-api.com/v6/48810b71d8c2fd943148a756/latest/ARS')
   .then(respuesta => respuesta.json())
   .then(respuestaJSON => {
-    const $divCurrencyDe = document.querySelectorAll('.currency-selected-de')
     const $divCurrencyA = document.querySelectorAll('.currency-selected-a')
-    Object.keys(respuestaJSON.conversion_rates).forEach((moneda, index) => {
-      const $p = document.createElement('span')
-      $p.className = 'descripcion'
-      $divCurrencyDe[index].appendChild($p).textContent = moneda
-    })
-    Object.keys(respuestaJSON.conversion_rates).forEach((moneda, index) => {
-      const $p = document.createElement('p')
-      $p.className = 'descripcion'
-      $divCurrencyA[index].appendChild($p).textContent = moneda
+    const $span = document.querySelector('.descripcion-de')
+    const monedas = Object.keys(respuestaJSON.conversion_rates)
+    const valorMonedas = Object.values(respuestaJSON.conversion_rates)
+    console.log(valorMonedas);
+    $span.textContent = monedas[0]
+    console.log(respuestaJSON.conversion_rates);
+    monedas.forEach((moneda, index) => {
+      const $span = document.createElement('span')
+      $span.className = 'descripcion-a'
+      $divCurrencyA[index].appendChild($span).textContent = moneda
     })
   })
 
-document.querySelectorAll('#dropdown-description > .currency-selected-de').forEach((moneda) => {
+document.querySelectorAll('.currency-selected-a').forEach((moneda) => {
   moneda.addEventListener('click', (e) => {
-    const $dropdown = document.querySelector('#dropdown')
-    const $elemento = e.currentTarget
-    const $divElementos = document.querySelectorAll('.currency-selected-de')
+    const $elemento = e.currentTarget.cloneNode(true)
 
-    for (let i = 0; i < $divElementos.length; i++) {
-      if ($elemento.classList.contains('currency-selected-de')) {
-        $elemento.classList.add('active')
-        $inputDeImporte.placeholder = ''
-        $dropdown.prepend($elemento)
-        $dropdown.replaceChild($elemento, $dropdown.firstChild)
-      } else if ($elemento.classList.contains('currency-selected-de active')) {
-
-      }
+    if ($elemento.classList.contains('currency-selected-a')) {
+      $elemento.classList.add('active')
+      $inputAImporte.placeholder = ''
+      $inputAImporte.style.backgroundImage = ''
+    }
+    if ($dropdownContenedorA.firstElementChild.classList.contains('input-a-importe')) {
+      $dropdownContenedorA.prepend($elemento)
+    } else {
+      $dropdownContenedorA.replaceChild($elemento, $dropdownContenedorA.firstChild)
     }
   })
 })
 
-function mostrarDatos(e) {
-  if (e.target.classList.contains('input-de-importe')) {
-    $contenidoDropdownDe.classList.add('show')
-  } else {
-    $contenidoDropdownDe.classList.remove('show')
+$inputAImporte.addEventListener('click', () => {
+  const $divCurrencyA = document.querySelector('.dropdown-a > .currency-selected-a')
+  if ($divCurrencyA) {
+    $divCurrencyA.remove()
   }
+  $inputAImporte.placeholder = 'Selecciona tu moneda'
+})
+
+function mostrarDatos(e) {
   if (e.target.classList.contains('input-a-importe')) {
-    $contenidoDropdownA.classList.add('show')
+    $dropdownA.classList.add('show')
   } else {
-    $contenidoDropdownA.classList.remove('show')
+    $dropdownA.classList.remove('show')
   }
 }
 
 function filtrarDivisas() {
-  const filtrar = $inputDeImporte.value.toUpperCase();
-  const $p = $contenidoDropdownDe.querySelectorAll('.descripcion');
-  const $img = $contenidoDropdownDe.querySelectorAll('.bandera-input')
+  const filtrarAImporte = $inputAImporte.value.toUpperCase()
+  const $pAInput = $dropdownA.querySelectorAll('.descripcion-a')
+  const $imgAImporte = $dropdownA.querySelectorAll('.bandera-input')
 
-  for (i = 0; i < $p.length && $img.length; i++) {
-    let texto = $p[i].innerText
-    if (texto.toUpperCase().indexOf(filtrar) > -1) {
-      $p[i].style.display = "";
-      $img[i].style.display = ''
-      $contenidoDropdownDe.style.height = '360px'
-      $contenidoDropdownA.style.height = '360px'
-      console.log('dentro del if');
-    } else {
-      $p[i].style.display = "none";
-      console.log('fuera');
-      $img[i].style.display = 'none'
-      $contenidoDropdownDe.style.height = '45px'
-      $contenidoDropdownA.style.height = '45px'
+  for (i = 0; i < $pAInput.length && $imgAImporte.length; i++) {
+    let textoAInput = $pAInput[i].innerText
+
+    if (textoAInput.toUpperCase().indexOf(filtrarAImporte) > -1) {
+      $pAInput[i].style.display = "";
+      $imgAImporte[i].style.display = ''
+      $dropdownA.style.height = '360px'
+    } else if (textoAInput.length === 3) {
+      $pAInput[i].style.display = "none";
+      $imgAImporte[i].style.display = 'none'
+      $dropdownA.style.height = '45px'
       // No hay resultados disponible
     }
   }
 }
+
+function convertirImporte(e) {
+  const $elemento = e.currentTarget.firstChild.lastChild
+  console.log($elemento);
+  const obtenerMoneda = monedas.find(moneda => moneda === $elemento.value)
+  console.log(obtenerMoneda);
+}
+convertirImporte()
 
 document.addEventListener('keyup', filtrarDivisas)
 document.addEventListener('click', mostrarDatos)
