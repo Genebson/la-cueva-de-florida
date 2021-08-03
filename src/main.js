@@ -1,27 +1,27 @@
-const $form = document.querySelector('#form')
-const $importe = $form.importe.value
-const $dropdownA = document.querySelector('.dropdown-content-a')
-const $inputAImporte = $form.querySelector('#input-a-importe')
-const $contenidoSelect = document.querySelector('.selectbox-de-importe .dropdown')
-const $dropdownContenedorDe = document.querySelector('.dropdown-de')
-const $dropdownContenedorA = document.querySelector('.dropdown-a')
-const $btnConvertir = $form.querySelector('#btn-convertir')
-const $textoResultado = $form.querySelector('#resultado')
+const $form = document.querySelector('#form');
+const $importe = $form.importe
+const $dropdownA = document.querySelector('.dropdown-content-a');
+const $inputAImporte = $form.querySelector('#input-a-importe');
+const $contenidoSelect = document.querySelector('.selectbox-de-importe .dropdown');
+const $dropdownContenedorDe = document.querySelector('.dropdown-de');
+const $dropdownContenedorA = document.querySelector('.dropdown-a');
+const $btnConvertir = $form.querySelector('#btn-convertir');
+const $textoResultado = $form.querySelector('#resultado');
+let monedaConvertida;
 
-fetch('https://v6.exchangerate-api.com/v6/48810b71d8c2fd943148a756/latest/ARS')
+fetch('https://v6.exchangerate-api.com/v6/acc63c206efbbf790d7ca564/latest/ARS')
   .then(respuesta => respuesta.json())
   .then(respuestaJSON => {
     const $divCurrencyA = document.querySelectorAll('.currency-selected-a')
-    const $span = document.querySelector('.descripcion-de')
+    const $monedaBase = document.querySelector('.descripcion-de')
     const monedas = Object.keys(respuestaJSON.conversion_rates)
-    const valorMonedas = Object.values(respuestaJSON.conversion_rates)
-    console.log(valorMonedas);
-    $span.textContent = monedas[0]
-    console.log(respuestaJSON.conversion_rates);
+    monedaConvertida = respuestaJSON.conversion_rates
+    $monedaBase.textContent = monedas[0]
+
     monedas.forEach((moneda, index) => {
-      const $span = document.createElement('span')
-      $span.className = 'descripcion-a'
-      $divCurrencyA[index].appendChild($span).textContent = moneda
+      const $nombreMoneda = document.createElement('span')
+      $nombreMoneda.className = 'descripcion-a'
+      $divCurrencyA[index].appendChild($nombreMoneda).textContent = moneda
     })
   })
 
@@ -32,7 +32,7 @@ document.querySelectorAll('.currency-selected-a').forEach((moneda) => {
     if ($elemento.classList.contains('currency-selected-a')) {
       $elemento.classList.add('active')
       $inputAImporte.placeholder = ''
-      $inputAImporte.style.backgroundImage = ''
+      $inputAImporte.style.backgroundImage = 'none'
     }
     if ($dropdownContenedorA.firstElementChild.classList.contains('input-a-importe')) {
       $dropdownContenedorA.prepend($elemento)
@@ -62,10 +62,12 @@ function filtrarDivisas() {
   const filtrarAImporte = $inputAImporte.value.toUpperCase()
   const $pAInput = $dropdownA.querySelectorAll('.descripcion-a')
   const $imgAImporte = $dropdownA.querySelectorAll('.bandera-input')
+  const $monedaNoDisponible = $dropdownA.querySelector('.moneda-no-disponible')
 
   for (i = 0; i < $pAInput.length && $imgAImporte.length; i++) {
     let textoAInput = $pAInput[i].innerText
-
+    // console.log(filtrarAImporte);
+    // console.log(textoAInput);
     if (textoAInput.toUpperCase().indexOf(filtrarAImporte) > -1) {
       $pAInput[i].style.display = "";
       $imgAImporte[i].style.display = ''
@@ -74,18 +76,79 @@ function filtrarDivisas() {
       $pAInput[i].style.display = "none";
       $imgAImporte[i].style.display = 'none'
       $dropdownA.style.height = '45px'
-      // No hay resultados disponible
+    } else if (textoAInput != filtrarAImporte) {
+      console.log('hola');
+      $monedaNoDisponible.style.display = 'inline'
+      $monedaNoDisponible.textContent = 'No hay resultados disponibles'
     }
   }
 }
 
-function convertirImporte(e) {
-  const $elemento = e.currentTarget.firstChild.lastChild
-  console.log($elemento);
-  const obtenerMoneda = monedas.find(moneda => moneda === $elemento.value)
-  console.log(obtenerMoneda);
-}
-convertirImporte()
+function convertirImporte() {
+  const $monedaSeleccionada = document.querySelector('.dropdown-a').firstChild.lastChild
+  console.log($monedaSeleccionada);
 
+  if ($monedaSeleccionada === null) {
+    validarInput()
+  } else if ($monedaSeleccionada.className === 'descripcion-a') {
+    const obtenerMoneda = monedaConvertida[$monedaSeleccionada.textContent]
+    let sumarValores = $importe.value * obtenerMoneda
+    $textoResultado.textContent = `${$importe.value} Pesos Argentinos = ${sumarValores} ${$monedaSeleccionada.textContent}`
+  }
+}
+
+function validarInput() {
+  const $textoImporte = document.querySelector('#texto-importe')
+  const $textoInputA = document.querySelector('#texto-a-importe')
+  const $monedaSeleccionada = document.querySelector('.dropdown-a').firstChild.lastChild
+  let errorImporte;
+  let errorAImporte;
+
+  if ($importe.value === '') {
+    errorImporte = 'Este campo debe contener al menos 1 numero'
+    $importe.classList.add('error')
+    $textoImporte.innerHTML = errorImporte
+  } else {
+    errorImporte = ''
+    $importe.classList.remove('error')
+  }
+
+  if ($monedaSeleccionada === null) {
+    errorAImporte = 'Antes de convertir debes seleccionar una moneda'
+    $inputAImporte.classList.add('error')
+    $textoInputA.innerHTML = errorAImporte
+  } else {
+    errorAImporte = ''
+    $inputAImporte.classList.remove('error')
+  }
+}
+
+function validarInputMoneda(e) {
+  const $textoInputA = document.querySelector('#texto-a-importe')
+  const monedaRegex = /^[a-zA-Z]+$/
+  const $monedaSeleccionada = document.querySelector('.dropdown-a').firstChild.lastChild
+  let errorAImporte;
+  console.log($monedaSeleccionada);
+  if (e.target.className === 'input-a-importe') {
+    if (isNaN($inputAImporte.value)) {
+      $inputAImporte.classList.add('error')
+      errorAImporte = 'Este campo solo acepta letras'
+      $textoInputA.innerHTML = errorAImporte
+      console.log('if concatenado');
+    } else if ($inputAImporte.value === $monedaSeleccionada.textContent) {
+      console.log('else if primero');
+      $inputAImporte.classList.add('error')
+      errorAImporte = 'Este campo solo acepta 3 letras'
+    } else if ($inputAImporte.value === '') {
+      console.log('segundo else if');
+      errorAImporte = ''
+      $inputAImporte.classList.remove('error')
+    }
+  }
+  console.log($inputAImporte.value);
+}
+
+$btnConvertir.addEventListener('click', convertirImporte)
+document.addEventListener('keyup', validarInputMoneda)
 document.addEventListener('keyup', filtrarDivisas)
 document.addEventListener('click', mostrarDatos)

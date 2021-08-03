@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -23,18 +23,28 @@ background-image: url('/assets/background/white-wood.jpg');
   border-radius: 5px;
 }
 
+.importe-span {margin-left: 5px;}
+
 .importe-span,
 .de-span,
 .a-span {
   display: block;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.1em;
+}
+
+.texto-error-importe,
+.texto-error-a-importe {
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 5px;
+  color: red
 }
 
 .fa-dollar-sign {
   position: absolute;
   margin-top: 42px;
-  margin-left: 5px;
+  margin-left: 25px;
   font-size: 1.3em;
   color:#C2BFBF;
 }
@@ -43,13 +53,14 @@ background-image: url('/assets/background/white-wood.jpg');
   box-sizing: border-box;
   font-size: 16px;
   padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 6px;
   cursor: pointer;
   border-radius: 2pt;
   outline: none;
   transition: .1s;
   width: 290px;
+  margin-left: 5px;
 }
 
 .input-importe::-webkit-inner-spin-button,
@@ -60,14 +71,10 @@ background-image: url('/assets/background/white-wood.jpg');
 
 .input-de-importe {
   box-sizing: border-box;
-  /* background-image: url('https://www.countryflags.io/ar/shiny/64.png');
-  background-position: top 3px left 1px;
-  background-size: 45px;
-  background-repeat: no-repeat; */
   padding: 14px 20px 12px 45px;
   outline: none;
-  border: none;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 6px;
   cursor: default;
   width: 290px;
 }
@@ -78,23 +85,31 @@ background-image: url('/assets/background/white-wood.jpg');
   background-repeat: no-repeat;
   font-size: 16px;
   padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 6px;
   outline: none;
   width: 290px;
   cursor: pointer;
 }
 
 
+.input-a-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
+.input-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
+.input-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
+.input-a-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
 .input-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
 .input-a-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
+
+.currency-selected-a.active {
+  margin-left: 5px;
+}
 
 .dropdown-de .currency-selected-de.active,
 .dropdown-a .currency-selected-a.active {
 position: absolute;
 width: 40px;
 margin-top: 5px;
-border-radius: 15px;
+/* border-radius: 15px; */
 }
 
 .dropdown-de,
@@ -125,7 +140,7 @@ border-radius: 15px;
 .bandera-input.active {
   position: absolute;
   width: 40px;
-  /* margin-top: 2px; */
+  margin-left: 5px;
   border-radius: 15px;
 }
 
@@ -148,13 +163,20 @@ border-radius: 15px;
 
 .descripcion-de {
   color: #000;
-  margin-left: 45px;
+  margin-left: 51px;
   margin-top: 22px;
 }
 
 .descripcion-a {
   color: #000;
   margin-top: 8px;
+  margin-left: 5px;
+}
+
+.moneda-no-disponible {
+  display: none;
+  margin-top: 8px;
+  margin-left: 5px;
 }
 
 .dropdown span:hover {background-color: #fff;}
