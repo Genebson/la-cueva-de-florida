@@ -96,7 +96,9 @@ background-image: url('/assets/background/white-wood.jpg');
 .input-a-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
 .input-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
 .input-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
+.input-importe.error {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
 .input-a-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
+.input-a-importe.error {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
 .input-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
 .input-a-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
 
