@@ -1,5 +1,5 @@
 const $form = document.querySelector('#form');
-const $importe = $form.importe
+const $importe = $form.importe;
 const $dropdownA = document.querySelector('.dropdown-content-a');
 const $inputAImporte = $form.querySelector('#input-a-importe');
 const $contenidoSelect = document.querySelector('.selectbox-de-importe .dropdown');
@@ -7,8 +7,18 @@ const $dropdownContenedorDe = document.querySelector('.dropdown-de');
 const $dropdownContenedorA = document.querySelector('.dropdown-a');
 const $btnConvertir = $form.querySelector('#btn-convertir');
 const $textoResultado = $form.querySelector('#resultado');
-const $textoImporte = document.querySelector('#texto-importe')
-const $textoInputA = document.querySelector('#texto-a-importe')
+const $textoImporte = document.querySelector('#texto-importe');
+const $textoInputA = document.querySelector('#texto-a-importe');
+const audioCambio = document.querySelector('#cambio');
+const audioCambioCambio = document.querySelector('#cambio-cambio');
+const audioSeñoraCambio = document.querySelector('#señora-cambio');
+
+const voces = [
+  { id: audioCambio, src: './src/sounds/cambio.mp3' },
+  { id: audioCambioCambio, src: './src/sounds/cambio-cambio.mp3' },
+  { id: audioSeñoraCambio, src: './src/sounds/señora-cambio.mp3' }
+]
+
 let monedaConvertida;
 
 fetch('https://v6.exchangerate-api.com/v6/acc63c206efbbf790d7ca564/latest/ARS')
@@ -65,23 +75,26 @@ function filtrarDivisas() {
   const filtrarAImporte = $inputAImporte.value.toUpperCase()
   const $pAInput = $dropdownA.querySelectorAll('.descripcion-a')
   const $imgAImporte = $dropdownA.querySelectorAll('.bandera-input')
-  const $monedaNoDisponible = $dropdownA.querySelector('.moneda-no-disponible')
+  const $monedaNoDisponible = document.querySelector('.moneda-no-disponible')
 
   for (i = 0; i < $pAInput.length && $imgAImporte.length; i++) {
     let textoAInput = $pAInput[i].innerText
 
     if (textoAInput.toUpperCase().indexOf(filtrarAImporte) > -1) {
+      console.log('primer if');
       $pAInput[i].style.display = "";
       $imgAImporte[i].style.display = ''
       $dropdownA.style.height = '360px'
     } else if (textoAInput.length === 3) {
-      $pAInput[i].style.display = "none";
+      console.log('primer else if');
+      $pAInput[i].style.display = 'none';
       $imgAImporte[i].style.display = 'none'
       $dropdownA.style.height = '45px'
-    } else if (textoAInput != filtrarAImporte) {
-      console.log('hola');
+    } else if (filtrarAImporte.length > 3) {
+      console.log('segundo else if');
       $monedaNoDisponible.style.display = 'inline'
       $monedaNoDisponible.textContent = 'No hay resultados disponibles'
+      // console.log($monedaNoDisponible);
     }
   }
 }
@@ -99,6 +112,7 @@ function convertirImporte() {
     $inputAImporte.classList.remove('error')
     $textoImporte.innerHTML = ''
     $textoInputA.innerHTML = ''
+    vocesAlConvertir()
   }
 }
 
@@ -128,10 +142,8 @@ function validarInput() {
 
 function validarInputMoneda(e) {
   const $textoInputA = document.querySelector('#texto-a-importe')
-  const monedaRegex = /^[a-zA-Z]+$/
-  const $monedaSeleccionada = document.querySelector('.dropdown-a').firstChild.lastChild
   let errorAImporte;
-  console.log($monedaSeleccionada);
+
   if (e.target.className.includes('input-a-importe')) {
     if (!isNaN($inputAImporte.value)) {
       $inputAImporte.classList.add('error')
@@ -149,6 +161,13 @@ function validarInputMoneda(e) {
       $inputAImporte.classList.remove('error')
     }
   }
+}
+
+function vocesAlConvertir() {
+  const vozAleatoria = Math.floor(Math.random() * voces.length)
+  const id = voces[vozAleatoria].id
+  // console.log(elementoAudio);
+  // elementoAudio.play()
 }
 
 $btnConvertir.addEventListener('click', convertirImporte)
