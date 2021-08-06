@@ -21,34 +21,34 @@
   <div class="container">
     <div class="row">
       <div class="logo-exchange d-flex justify-content-center">
-        <img src="./assets/logo/logo1.png" alt="">
+        <img src="./assets/logo/logo1.png" class="img-fluid" alt="La Cueva de Florida logo">
       </div>
     </div>
     <div class="container-conversor">
-      <form class="inside mt-5" id="form">
+      <form class="inside mt-5 row-cols-lg-auto" id="form">
         <div class="row">
-          <div class="selectbox-input-importe col-lg-4 mt-4">
+          <div class="selectbox-input-importe col-sm-12 col-lg-4 mt-4">
             <i class="fas fa-dollar-sign"></i>
             <span class="importe-span">Importe</span>
             <input type="number" id="importe" name="importe" class="input-importe">
-            <span id="texto-importe" class="texto-error-importe"></span>
+            <p id="texto-importe" class="texto-error-importe"></p>
           </div>
-          <div class="selectbox-de-importe col-lg-4 mt-4">
+          <div class="selectbox-de-importe col-sm-12 col-lg-4 mt-4">
             <span class="de-span">De</span>
             <div class="dropdown-de">
               <div class="currency-selected-de active">
                 <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input active">
-                <span class="descripcion-de"></span>
+                <p class="descripcion-de"></p>
               </div>
               <input type="text" class="input-de-importe" id="input-de-importe" readonly="readonly">
             </div>
           </div>
-          <div class="selectbox-a-importe col-lg-4 mt-4">
+          <div class="selectbox-a-importe col-sm-12 col-lg-4 mt-4">
             <span class="a-span">A</span>
             <div class="dropdown-a">
               <input type="text" placeholder="Selecciona tu moneda" name="importe-a" class="input-a-importe"
                 id="input-a-importe">
-              <span id="texto-a-importe" class="texto-error-a-importe"></span>
+              <p id="texto-a-importe" class="texto-error-a-importe"></p>
               <div id="dropdown-description-a" class="dropdown-content-a">
                 <div class="currency-selected-a">
                   <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input">

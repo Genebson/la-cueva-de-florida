@@ -19,7 +19,7 @@ background-image: url('../assets/background/white-wood.jpg');
   box-shadow: rgb(35 55 80 / 30%) 0px 12px 12px;
   background-color: #fff;
   width: 1104px;
-  height: 242px;
+  height: 282px;
   border-radius: 5px;
 }
 
@@ -120,7 +120,6 @@ margin-top: 5px;
   display: inline-block;
 }
 
-.dropdown-content-de,
 .dropdown-content-a {
   display: none;
   position: absolute;
@@ -128,10 +127,9 @@ margin-top: 5px;
   min-width: 292px;
   overflow: auto;
   height: 360px;
-  margin-top: 5px;
+  margin-top: -12px;
   border: 1px solid #ddd;
   border-radius: 7px;
-  z-index: 100;
 }
 
 .bandera-input {
@@ -166,7 +164,7 @@ margin-top: 5px;
 .descripcion-de {
   color: #000;
   margin-left: 51px;
-  margin-top: 22px;
+  margin-top: 8px;
 }
 
 .descripcion-a {
@@ -230,6 +228,12 @@ margin-top: 5px;
   box-shadow: 0 8px 0 #111;
 }
 
+.texto-resultado {
+  font-family: 'montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+}
+
 a {
   text-decoration: none;
 }
@@ -242,4 +246,39 @@ a {
 .fa-github {
   color: #000;
   font-size: 3em;
+}
+
+@media screen and (max-width:991px) {
+  .inside {
+    height: 552px;
+  }
+  .selectbox-input-importe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .selectbox-de-importe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    .selectbox-a-importe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fa-dollar-sign {
+  margin-top: 54px;
+  margin-right: 260px;
+  }
+  .importe-span,
+  .de-span,
+  .a-span {
+    margin-top: 12px;
+    margin-right: 5px;
+  }
+  .texto-resultado {
+    font-size: 1em;
+    text-align: center;
+  }
 }
