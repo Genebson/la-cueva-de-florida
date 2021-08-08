@@ -111,7 +111,6 @@ background-image: url('../assets/background/white-wood.jpg');
 position: absolute;
 width: 40px;
 margin-top: 5px;
-/* border-radius: 15px; */
 }
 
 .dropdown-de,
@@ -207,7 +206,6 @@ margin-top: 5px;
   justify-content: space-between;
   align-items: center;
   transition: .2s ease all;
-  /* margin-bottom: 30px; */
   padding: 30px;
   z-index: 200;
   border-radius: 2px solid transparent;
@@ -254,6 +252,12 @@ a {
   font-size: 3em;
 }
 
+.imagen-error {
+  display: none;
+  width: 410px;
+  height: 410px;
+}
+
 @media screen and (max-width:991px) {
   .inside {
     height: 552px;
@@ -286,5 +290,8 @@ a {
   .texto-resultado {
     font-size: 1em;
     text-align: center;
+  }
+  .imagen-error {
+    display: none;
   }
 }

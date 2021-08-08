@@ -21,6 +21,6 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "cypress": "^7.6.0"
+    "cypress": "^8.2.0"
   }
 }

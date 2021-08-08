@@ -12,13 +12,11 @@ const $textoInputA = document.querySelector('#texto-a-importe');
 const audioCambio = document.querySelector('#cambio');
 const audioCambioCambio = document.querySelector('#cambio-cambio');
 const audioSenioraCambio = document.querySelector('#seniora-cambio');
-
-console.log(audioCambio);
-console.log(audioCambioCambio);
-console.log(audioSenioraCambio);
+const errorImg = document.querySelector('.imagen-error')
 let monedaConvertida;
 
 const voces = [audioCambio, audioCambioCambio, audioSenioraCambio]
+const imagenes = ['./assets/background/no-money.webp', './assets/background/no-money1.gif']
 
 fetch('https://v6.exchangerate-api.com/v6/acc63c206efbbf790d7ca564/latest/ARS')
   .then(respuesta => respuesta.json())
@@ -80,22 +78,20 @@ function filtrarDivisas() {
     let textoMonedas = $pAInput[i].innerText
 
     if (textoMonedas.toUpperCase().indexOf(textoInputA) > -1) {
-      console.log('primer if');
       $pAInput[i].style.display = "";
       $imgAImporte[i].style.display = ''
       $dropdownA.style.height = '360px'
+      $monedaNoDisponible.style.display = 'none'
     } else if (textoMonedas.length === 3) {
-      console.log('primer else if');
       $pAInput[i].style.display = 'none';
       $imgAImporte[i].style.display = 'none'
       $dropdownA.style.height = '45px'
+      $monedaNoDisponible.style.display = 'none'
     }
 
     if (textoInputA.length > 3) {
-      console.log('segundo if');
       $monedaNoDisponible.style.display = 'inline'
       $monedaNoDisponible.textContent = 'No hay resultados disponibles'
-      // console.log($monedaNoDisponible);
     }
   }
 }
@@ -105,14 +101,17 @@ function convertirImporte() {
 
   if ($monedaSeleccionada === null || $importe.value === '') {
     validarInput()
+    imagenRandom()
+    $textoResultado.textContent = ''
   } else if ($monedaSeleccionada.className === 'descripcion-a' && !isNaN($importe.value)) {
     const obtenerMoneda = monedaConvertida[$monedaSeleccionada.textContent]
-    let sumarValores = $importe.value * obtenerMoneda
-    $textoResultado.textContent = `${$importe.value} Pesos Argentinos = ${sumarValores} ${$monedaSeleccionada.textContent}`
+    let sumarValores = ($importe.value * obtenerMoneda).toFixed(2)
+    $textoResultado.textContent = `$${$importe.value} Pesos Argentinos = ${sumarValores} ${$monedaSeleccionada.textContent}`
     $importe.classList.remove('error')
     $inputAImporte.classList.remove('error')
     $textoImporte.innerHTML = ''
     $textoInputA.innerHTML = ''
+    errorImg.style.display = 'none'
     vocesRandom()
   }
 }
@@ -150,13 +149,10 @@ function validarInputMoneda(e) {
       $inputAImporte.classList.add('error')
       errorAImporte = 'Este campo solo acepta letras'
       $textoInputA.innerHTML = errorAImporte
-      console.log('if concatenado');
     } else if ($inputAImporte.value > 3) {
-      console.log('else if primero');
       $inputAImporte.classList.add('error')
       errorAImporte = 'Este campo solo acepta 3 letras'
     } else if ($inputAImporte.value === '') {
-      console.log('segundo else if');
       errorAImporte = ''
       $inputAImporte.classList.add('correct')
       $inputAImporte.classList.remove('error')
@@ -166,10 +162,14 @@ function validarInputMoneda(e) {
 
 function vocesRandom() {
   const vozAleatoria = voces[Math.floor(Math.random() * voces.length)]
-  console.log(vozAleatoria);
-  const audio = new Audio(vozAleatoria.attributes[0].src.textContent)
-  console.log(audio);
+  const audio = new Audio(vozAleatoria.currentSrc)
   audio.play()
+}
+
+function imagenRandom() {
+  const imagenAleatoria = Math.floor(Math.random() * imagenes.length)
+  errorImg.src = imagenes[imagenAleatoria]
+  errorImg.style.display = 'inline-block'
 }
 
 $btnConvertir.addEventListener('click', convertirImporte)
