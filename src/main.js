@@ -11,15 +11,14 @@ const $textoImporte = document.querySelector('#texto-importe');
 const $textoInputA = document.querySelector('#texto-a-importe');
 const audioCambio = document.querySelector('#cambio');
 const audioCambioCambio = document.querySelector('#cambio-cambio');
-const audioSeñoraCambio = document.querySelector('#señora-cambio');
+const audioSenioraCambio = document.querySelector('#seniora-cambio');
 
-const voces = [
-  { id: audioCambio, src: './src/sounds/cambio.mp3' },
-  { id: audioCambioCambio, src: './src/sounds/cambio-cambio.mp3' },
-  { id: audioSeñoraCambio, src: './src/sounds/señora-cambio.mp3' }
-]
-
+console.log(audioCambio);
+console.log(audioCambioCambio);
+console.log(audioSenioraCambio);
 let monedaConvertida;
+
+const voces = [audioCambio, audioCambioCambio, audioSenioraCambio]
 
 fetch('https://v6.exchangerate-api.com/v6/acc63c206efbbf790d7ca564/latest/ARS')
   .then(respuesta => respuesta.json())
@@ -72,26 +71,28 @@ function mostrarDatos(e) {
 }
 
 function filtrarDivisas() {
-  const filtrarAImporte = $inputAImporte.value.toUpperCase()
+  const textoInputA = $inputAImporte.value.toUpperCase()
   const $pAInput = $dropdownA.querySelectorAll('.descripcion-a')
   const $imgAImporte = $dropdownA.querySelectorAll('.bandera-input')
   const $monedaNoDisponible = document.querySelector('.moneda-no-disponible')
 
   for (i = 0; i < $pAInput.length && $imgAImporte.length; i++) {
-    let textoAInput = $pAInput[i].innerText
+    let textoMonedas = $pAInput[i].innerText
 
-    if (textoAInput.toUpperCase().indexOf(filtrarAImporte) > -1) {
+    if (textoMonedas.toUpperCase().indexOf(textoInputA) > -1) {
       console.log('primer if');
       $pAInput[i].style.display = "";
       $imgAImporte[i].style.display = ''
       $dropdownA.style.height = '360px'
-    } else if (textoAInput.length === 3) {
+    } else if (textoMonedas.length === 3) {
       console.log('primer else if');
       $pAInput[i].style.display = 'none';
       $imgAImporte[i].style.display = 'none'
       $dropdownA.style.height = '45px'
-    } else if (filtrarAImporte.length > 3) {
-      console.log('segundo else if');
+    }
+
+    if (textoInputA.length > 3) {
+      console.log('segundo if');
       $monedaNoDisponible.style.display = 'inline'
       $monedaNoDisponible.textContent = 'No hay resultados disponibles'
       // console.log($monedaNoDisponible);
@@ -112,7 +113,7 @@ function convertirImporte() {
     $inputAImporte.classList.remove('error')
     $textoImporte.innerHTML = ''
     $textoInputA.innerHTML = ''
-    vocesAlConvertir()
+    vocesRandom()
   }
 }
 
@@ -163,11 +164,12 @@ function validarInputMoneda(e) {
   }
 }
 
-function vocesAlConvertir() {
-  const vozAleatoria = Math.floor(Math.random() * voces.length)
-  const id = voces[vozAleatoria].id
-  // console.log(elementoAudio);
-  // elementoAudio.play()
+function vocesRandom() {
+  const vozAleatoria = voces[Math.floor(Math.random() * voces.length)]
+  console.log(vozAleatoria);
+  const audio = new Audio(vozAleatoria.attributes[0].src.textContent)
+  console.log(audio);
+  audio.play()
 }
 
 $btnConvertir.addEventListener('click', convertirImporte)
