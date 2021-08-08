@@ -12,7 +12,6 @@ context('Conversor de Divisas', () => {
       cy.get('.btn-convertir').click()
       cy.get('.imagen-error').should('be.visible')
       cy.visit(URL)
-      Cypress.config("waitAfterEachCommand", 2000)
     })
 
     it('Chequea que el input de monedas falle', () => {
@@ -20,7 +19,6 @@ context('Conversor de Divisas', () => {
       cy.get('.input-importe').should('be.empty')
       cy.get('.imagen-error').should('not.be.visible')
       cy.visit(URL)
-      Cypress.config("waitAfterEachCommand", 2000)
     })
   })
 
