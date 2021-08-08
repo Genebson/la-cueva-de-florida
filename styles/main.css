@@ -292,6 +292,6 @@ a {
     text-align: center;
   }
   .imagen-error {
-    display: none;
+    display: none!important;
   }
 }
