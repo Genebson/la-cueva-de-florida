@@ -1,569 +1,1090 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/90abbd5f29.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/main.css">
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/90abbd5f29.js" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>La Cueva de Florida</title>
+  </head>
 
-  <title>La Cueva de Florida</title>
-</head>
-
-<body>
-  <audio src="./src/sounds/cambio.mp3" id="cambio"></audio>
-  <audio src="./src/sounds/cambio-cambio.mp3" id="cambio-cambio"></audio>
-  <audio src="./src/sounds/señora-cambio.mp3" id="seniora-cambio"></audio>
-  <div class="container">
-    <div class="row">
-      <div class="logo-exchange d-flex justify-content-center">
-        <img src="./assets/logo/logo1.png" class="img-fluid" alt="La Cueva de Florida logo">
+  <body>
+    <audio src="./src/sounds/cambio.mp3" id="cambio"></audio>
+    <audio src="./src/sounds/cambio-cambio.mp3" id="cambio-cambio"></audio>
+    <audio src="./src/sounds/señora-cambio.mp3" id="seniora-cambio"></audio>
+    <div class="container">
+      <div class="row">
+        <div class="logo-exchange d-flex justify-content-center">
+          <img
+            src="./assets/logo/logo1.png"
+            class="img-fluid"
+            alt="La Cueva de Florida logo"
+          />
+        </div>
       </div>
-    </div>
-    <div class="container-conversor">
-      <form class="inside mt-5 row-cols-lg-auto" id="form">
-        <div class="row">
-          <div class="selectbox-input-importe col-sm-12 col-lg-4 mt-4">
-            <i class="fas fa-dollar-sign"></i>
-            <span class="importe-span">Importe</span>
-            <input type="number" id="importe" name="importe" class="input-importe">
-            <p id="texto-importe" class="texto-error-importe"></p>
-          </div>
-          <div class="selectbox-de-importe col-sm-12 col-lg-4 mt-4">
-            <span class="de-span">De</span>
-            <div class="dropdown-de">
-              <div class="currency-selected-de active">
-                <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input active">
-                <p class="descripcion-de"></p>
-              </div>
-              <input type="text" class="input-de-importe" id="input-de-importe" readonly="readonly">
+      <div class="container-conversor">
+        <form class="inside mt-5 row-cols-lg-auto" id="form">
+          <div class="row">
+            <div class="selectbox-input-importe col-sm-12 col-lg-4 mt-4">
+              <i class="fas fa-dollar-sign"></i>
+              <span class="importe-span">Importe</span>
+              <input
+                type="number"
+                id="importe"
+                name="importe"
+                class="input-importe"
+              />
+              <p id="texto-importe" class="texto-error-importe"></p>
             </div>
-          </div>
-          <div class="selectbox-a-importe col-sm-12 col-lg-4 mt-4">
-            <span class="a-span">A</span>
-            <div class="dropdown-a">
-              <input type="text" placeholder="Selecciona tu moneda" name="importe-a" class="input-a-importe"
-                id="input-a-importe">
-              <p id="texto-a-importe" class="texto-error-a-importe"></p>
-              <div id="dropdown-description-a" class="dropdown-content-a">
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ar/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ae/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/af/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/al/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/am/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/an/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ao/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/au/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/aw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/az/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ba/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bb/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bd/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bh/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bi/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bm/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bo/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/br/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bs/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bt/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/by/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/bz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ca/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cd/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ch/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cl/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/co/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cv/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/cz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/dj/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/dk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/do/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/dz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/eg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/er/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/et/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/eu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/fj/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/fk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/fo/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gb/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ge/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gh/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gi/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gm/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gt/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/gy/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/hk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/hn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/hr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ht/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/hu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/id/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/il/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/im/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/in/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/iq/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ir/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/is/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/jm/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/jo/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/jp/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ke/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/kg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/kh/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ki/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/km/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/kr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/kw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ky/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/kz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/la/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/lb/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/lk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/lr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ls/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ly/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ma/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/md/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mm/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mo/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mv/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mx/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/my/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/mz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/na/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ng/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ni/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/no/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/np/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/nz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/om/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/pa/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/pe/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/pg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ph/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/pk/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/pl/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/py/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/qa/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ro/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/rs/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ru/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/rw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sa/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sb/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sc/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sd/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/se/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sg/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sh/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sl/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/so/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ss/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/st/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sy/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/sz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/th/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tj/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tm/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/to/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tr/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tt/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tv/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/tz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ua/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ug/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/us/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/uy/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/uz/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ve/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/vn/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/vu/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ws/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="./assets/flag-default/unknown-flag.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="./assets/flag-default/unknown-flag.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="./assets/flag-default/unknown-flag.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="./assets/flag-default/unknown-flag.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="./assets/flag-default/unknown-flag.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/ye/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/za/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a">
-                  <img src="https://www.countryflags.io/zw/shiny/64.png" class="bandera-input">
-                </div>
-                <div class="currency-selected-a busqueda-no-encontrada">
-                  <span class="moneda-no-disponible"></span>
-                </div>
+            <div class="selectbox-de-importe col-sm-12 col-lg-4 mt-4">
+              <span class="de-span">De</span>
+              <div class="dropdown-de">
+                <div class="currency-selected-de active">
+                  <img
+                    src="https://countryflagsapi.com/png/ar"
+                    class="bandera-input active"
+                  />
+                  <p class="descripcion-de"></p>
+                </div>
+                <input
+                  type="text"
+                  class="input-de-importe"
+                  id="input-de-importe"
+                  readonly="readonly"
+                />
               </div>
             </div>
+            <div class="selectbox-a-importe col-sm-12 col-lg-4 mt-4">
+              <span class="a-span">A</span>
+              <div class="dropdown-a">
+                <input
+                  type="text"
+                  placeholder="Selecciona tu moneda"
+                  name="importe-a"
+                  class="input-a-importe"
+                  id="input-a-importe"
+                />
+                <p id="texto-a-importe" class="texto-error-a-importe"></p>
+                <div id="dropdown-description-a" class="dropdown-content-a">
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ar"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ae"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/af"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/al"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/am"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ao"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/au"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/aw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/az"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ba"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bb"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bd"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bh"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bi"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bm"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bo"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/br"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bs"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bt"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/by"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/bz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ca"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cd"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ch"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cl"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/co"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cv"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/cz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/dj"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/dk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/do"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/dz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/eg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/er"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/et"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/eu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/fj"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/fk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/fo"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gb"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ge"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gh"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gi"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gm"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gt"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/gy"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/hk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/hn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/hr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ht"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/hu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/id"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/il"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/im"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/in"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/iq"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ir"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/is"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/jm"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/jo"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/jp"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ke"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/kg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/kh"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ki"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/km"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/kr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/kw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ky"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/kz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/la"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/lb"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/lk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/lr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ls"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ly"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ma"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/md"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mm"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mo"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mv"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mx"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/my"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/mz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/na"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ng"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ni"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/no"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/np"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/nz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/om"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/pa"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/pe"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/pg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ph"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/pk"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/pl"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/py"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/qa"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ro"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/rs"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ru"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/rw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sa"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sb"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sc"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sd"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/se"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sg"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sh"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sl"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/so"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ss"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/st"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sy"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/sz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/th"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tj"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tm"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/to"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tr"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tt"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tv"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/tz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ua"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ug"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/us"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/uy"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/uz"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ve"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/vn"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/vu"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ws"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="./assets/flag-default/unknown-flag.png"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/ye"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/za"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a">
+                    <img
+                      src="https://countryflagsapi.com/png/zw"
+                      class="bandera-input"
+                    />
+                  </div>
+                  <div class="currency-selected-a busqueda-no-encontrada">
+                    <span class="moneda-no-disponible"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="resultado-conversion col-lg-12 d-flex justify-content-center mt-4"
+            >
+              <span class="texto-resultado" id="resultado"></span>
+            </div>
           </div>
-          <div class="resultado-conversion col-lg-12 d-flex justify-content-center mt-4">
-            <span class="texto-resultado" id="resultado"></span>
+          <div class="button-container col-lg-12 mt-5">
+            <button type="button" class="btn-convertir" id="btn-convertir">
+              Convertir
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="imagen-error-container d-flex justify-content-center">
+            <img class="imagen-error" src="" id="error" />
           </div>
         </div>
-        <div class="button-container col-lg-12 mt-5">
-          <button type="button" class="btn-convertir" id="btn-convertir">Convertir</button>
-        </div>
-      </form>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="imagen-error-container d-flex justify-content-center">
-          <img class="imagen-error" src="" id="error">
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="github mt-5" id="github">
+            <a
+              href="http://github.com/Genebson/la-cueva-de-florida"
+              target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="github mt-5" id="github">
-          <a href="http://github.com/Genebson/la-cueva-de-florida" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="./src/main.js"></script>
-</body>
-
+    <script src="./src/main.js"></script>
+  </body>
 </html>
