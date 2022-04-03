@@ -2,13 +2,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
-background-image: url('../assets/background/white-wood.jpg');
+  background-image: url("../assets/background/white-wood.jpg");
 }
-
 
 .container-conversor {
   display: flex;
@@ -23,7 +22,9 @@ background-image: url('../assets/background/white-wood.jpg');
   border-radius: 5px;
 }
 
-.importe-span {margin-left: 5px;}
+.importe-span {
+  margin-left: 5px;
+}
 
 .importe-span,
 .de-span,
@@ -38,7 +39,7 @@ background-image: url('../assets/background/white-wood.jpg');
   font-size: 13px;
   font-weight: bold;
   margin-left: 5px;
-  color: red
+  color: red;
 }
 
 .fa-dollar-sign {
@@ -46,7 +47,7 @@ background-image: url('../assets/background/white-wood.jpg');
   margin-top: 42px;
   margin-left: 25px;
   font-size: 1.3em;
-  color:#C2BFBF;
+  color: #c2bfbf;
 }
 
 .input-importe {
@@ -58,15 +59,15 @@ background-image: url('../assets/background/white-wood.jpg');
   cursor: pointer;
   border-radius: 2pt;
   outline: none;
-  transition: .1s;
+  transition: 0.1s;
   width: 290px;
   margin-left: 5px;
 }
 
 .input-importe::-webkit-inner-spin-button,
 .input-importe::-webkit-outer-spin-button {
-  -webkit-appearance: none; 
-  margin: 0; 
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .input-de-importe {
@@ -80,7 +81,7 @@ background-image: url('../assets/background/white-wood.jpg');
 }
 .input-a-importe {
   box-sizing: border-box;
-  background-image: url('https://www.w3schools.com/howto/searchicon.png');
+  background-image: url("https://www.w3schools.com/howto/searchicon.png");
   background-position: top 17px left 15px;
   background-repeat: no-repeat;
   font-size: 16px;
@@ -92,15 +93,38 @@ background-image: url('../assets/background/white-wood.jpg');
   cursor: pointer;
 }
 
-
-.input-a-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
-.input-importe.correct:focus {cursor: auto; box-shadow: 0 0 3pt 2pt green;}
-.input-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
-.input-importe.error {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
-.input-a-importe.error:focus {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
-.input-a-importe.error {cursor: auto; box-shadow: 0 0 3pt 2pt red;}
-.input-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
-.input-a-importe:focus {cursor: auto; box-shadow: 0 0 3pt 2pt cornflowerblue;}
+.input-a-importe.correct:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt green;
+}
+.input-importe.correct:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt green;
+}
+.input-importe.error:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt red;
+}
+.input-importe.error {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt red;
+}
+.input-a-importe.error:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt red;
+}
+.input-a-importe.error {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt red;
+}
+.input-importe:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt cornflowerblue;
+}
+.input-a-importe:focus {
+  cursor: auto;
+  box-shadow: 0 0 3pt 2pt cornflowerblue;
+}
 
 .currency-selected-a.active {
   margin-left: 5px;
@@ -108,9 +132,9 @@ background-image: url('../assets/background/white-wood.jpg');
 
 .dropdown-de .currency-selected-de.active,
 .dropdown-a .currency-selected-a.active {
-position: absolute;
-width: 40px;
-margin-top: 5px;
+  position: absolute;
+  width: 40px;
+  margin-top: 5px;
 }
 
 .dropdown-de,
@@ -134,12 +158,14 @@ margin-top: 5px;
 .bandera-input {
   width: 40px;
   border-radius: 40%;
+  margin-top: 7px;
 }
 
 .bandera-input.active {
   position: absolute;
   width: 40px;
   margin-left: 5px;
+  margin-top: 8px;
   border-radius: 15px;
 }
 
@@ -152,12 +178,12 @@ margin-top: 5px;
 
 .currency-selected-de:hover,
 .currency-selected-a:hover {
-  background-color: #D1C7CF
+  background-color: #d1c7cf;
 }
 
 .active:hover,
 .active:hover {
-  background-color: white
+  background-color: white;
 }
 
 .descripcion-de {
@@ -178,9 +204,13 @@ margin-top: 5px;
   margin-left: 5px;
 }
 
-.dropdown span:hover {background-color: #fff;}
+.dropdown span:hover {
+  background-color: #fff;
+}
 
-.show {display: block;}
+.show {
+  display: block;
+}
 
 .dropdown-content img {
   display: flex;
@@ -199,17 +229,17 @@ margin-top: 5px;
 .select-a-importe {
   background: #fff;
   width: 100%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, .16);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.16);
   border-radius: 10px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: .2s ease all;
+  transition: 0.2s ease all;
   padding: 30px;
   z-index: 200;
   border-radius: 2px solid transparent;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, .16)
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
 }
 
 .button-container {
@@ -227,7 +257,7 @@ margin-top: 5px;
 }
 
 .texto-resultado {
-  font-family: 'montserrat', sans-serif;
+  font-family: "montserrat", sans-serif;
   font-size: 2em;
   font-weight: 800;
   text-align: center;
@@ -235,7 +265,7 @@ margin-top: 5px;
   background: #000000;
   background-clip: text;
   -webkit-background-clip: text;
-  text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
 }
 
 a {
@@ -258,7 +288,7 @@ a {
   height: 410px;
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width: 991px) {
   .inside {
     height: 552px;
   }
@@ -272,14 +302,14 @@ a {
     flex-direction: column;
     align-items: center;
   }
-    .selectbox-a-importe {
+  .selectbox-a-importe {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .fa-dollar-sign {
-  margin-top: 54px;
-  margin-right: 260px;
+    margin-top: 54px;
+    margin-right: 260px;
   }
   .importe-span,
   .de-span,
@@ -292,6 +322,6 @@ a {
     text-align: center;
   }
   .imagen-error {
-    display: none!important;
+    display: none !important;
   }
 }
